@@ -1,0 +1,184 @@
+object transformer_configuration {
+	name AS_config;
+	connect_type SINGLE_PHASE_CENTER_TAPPED;
+	install_type POLETOP;
+	powerA_rating 50;
+	primary_voltage 2400;
+	secondary_voltage 120.000;
+	impedance 0.006+0.0136j;
+}
+object transformer {
+	name center_tap_1; 
+	phases AS; 
+	from load:11; 
+	to trip_node1; 
+	configuration AS_config;
+}
+object triplex_node {
+	name trip_node1; 
+	phases AS; 
+	nominal_voltage 120;
+}
+object triplex_line_conductor {
+	name tp_line_conductor;
+	resistance 0.97;
+	geometric_mean_radius 0.0111;
+};
+
+object triplex_line_configuration {
+	name triplex_line_configuration_1;
+	conductor_1 tp_line_conductor;
+	conductor_2 tp_line_conductor;
+	conductor_N tp_line_conductor;
+	insulation_thickness 0.08;
+	diameter 0.368;
+}
+object triplex_line {
+	name trip_line1; 
+	phases AS; 
+	from trip_node1; 
+	to trip_meter1; 
+	length 0; 
+	configuration triplex_line_configuration_1;
+}
+object triplex_meter {
+	name trip_meter1; 
+	phases AS; 
+	nominal_voltage 120;
+}
+
+object house:..3{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 1;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+	object evcharger_det {
+		maximum_charge_rate 3200;
+		breaker_amps 16;
+		battery_size 32;
+		battery_capacity 38;
+		arrival_at_home 1700;
+		arrival_at_work 0900;
+		configuration IS220;
+		object recorder{
+		property charge_rate,battery_capacity;
+		file "ev_charge_rate1.csv";
+		interval 3600;
+	};
+	};
+}
+
+object house:..3{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 1;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+	object evcharger_det {
+		maximum_charge_rate 3200;
+		arrival_at_work 0900;
+		breaker_amps 16;
+		battery_size 64;
+		battery_capacity 32;
+		arrival_at_home 1700;
+		configuration IS220;
+		object recorder{
+		property charge_rate;
+		file "ev_charge_rate2.csv";
+		interval 3600;
+	};
+	};
+}
+
+object house:..3{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 0.;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+	object evcharger_det {
+		maximum_charge_rate 3200;
+		breaker_amps 16;
+		battery_size 64;
+		battery_capacity 30;
+		arrival_at_home 1700;
+		arrival_at_work 0900;
+		configuration IS220;
+		object recorder{
+		property charge_rate;
+		file "ev_charge_rate3.csv";
+		interval 3600;
+	};
+	};
+}
+
+object house:..3{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 1;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+	object evcharger_det {
+		maximum_charge_rate 3200;
+		breaker_amps 16;
+		battery_size 64;
+		battery_capacity 40;
+		arrival_at_home 1700;
+		arrival_at_work 0900;
+		configuration IS220;
+		object recorder{
+		property charge_rate;
+		file "ev_charge_rate4.csv";
+		interval 3600;
+	};
+	};
+}
+
+object house:..3{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 1;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+	object evcharger_det {
+		maximum_charge_rate 3200;
+		breaker_amps 16;
+		battery_size 64;
+		battery_capacity 20; 
+		arrival_at_home 1700;
+		arrival_at_work 0900;
+		configuration IS220;
+		object recorder{
+		property charge_rate,battery_capacity;
+		file "ev_charge_rate5.csv";
+		interval 3600;
+	};
+	};
+}
+
+object house:..20{
+	parent trip_meter1;
+	object lights {
+			type CFL;
+            //type INCANDESCENT;          
+            placement INDOOR;
+			power_factor 1;
+            shape "type:analog; schedule: light_load; power:2kW";
+	};
+}

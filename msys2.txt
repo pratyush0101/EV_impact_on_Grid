@@ -1,0 +1,57 @@
+$ pacman -Syuu
+$ pacman -Su
+$ pacman -S --needed base-devel mingw-w64-x86_64-toolchain git mingw-w64-x86_64-dlfcn mingw-w64-x86_64-xerces-c automake autoconf libtool
+export PATH=$PATH:/mingw64/bin
+Then, I ran the "MSYS2 MinGW x64" shortcut.
+
+$ cd E:/
+$ git clone https://github.com/gridlab-d/gridlab-d.git gridlab_clone
+$ cd gridlab_clone
+$ git checkout release/v4.2
+$ git checkout release/v4.3
+$ autoreconf -if
+
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:34: warning: The macro `AC_CONFIG_HEADER' is obsolete.
+configure.ac:34: You should run autoupdate.
+../autoconf-2.71/lib/autoconf/status.m4:719: AC_CONFIG_HEADER is expanded from...
+configure.ac:34: the top level
+configure.ac:105: warning: The macro `AC_GNU_SOURCE' is obsolete.
+configure.ac:105: You should run autoupdate.
+../autoconf-2.71/lib/autoconf/specific.m4:312: AC_GNU_SOURCE is expanded from...
+configure.ac:105: the top level
+configure.ac:225: warning: The macro `AC_HEADER_STDC' is obsolete.
+configure.ac:225: You should run autoupdate.
+../autoconf-2.71/lib/autoconf/headers.m4:704: AC_HEADER_STDC is expanded from...
+configure.ac:225: the top level
+configure.ac:542: installing 'build-aux/ar-lib'
+configure.ac:104: installing 'build-aux/compile'
+configure.ac:54: installing 'build-aux/config.guess'
+configure.ac:54: installing 'build-aux/config.sub'
+configure.ac:41: installing 'build-aux/install-sh'
+configure.ac:41: installing 'build-aux/missing'
+Makefile.am: installing 'build-aux/depcomp'
+
+$ ./configure --prefix=<E:/GLD> --with-xerces=E:/msys2/mingw64/lib --enable-silent-rules 'CFLAGS=-O2 -w' 'CXXFLAGS=-O2 -w' 'LDFLAGS=-O2 -w -L/mingw64/bin' --with-helics=E:/anaconda/Lib/site-packages/helics
+
+I get the following error:
+bash: --with-xerces=E:/msys2/mingw64/lib: No such file or directory
+
+export PATH=$PATH:/mingw64/bin
+
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-helics=/c/Users/NATHAN~1/.conda/pkgs/helics-2.2.0-py37ha925a31_0/Library/bin --with-xerces=/mingw64 --enable-silent-rules 'CFLAGS=-g -O2 -w' 'CXXFLAGS=-g -O2 -w' 'LDFLAGS=-g -O2 -w -L/mingw64/bin'
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-xerces=/e/msys2/mingw64 --enable-silent-rules 'CFLAGS=-g -O2 -w' 'CXXFLAGS=-g -O2 -w' 'LDFLAGS=-g -O2 -w -L/mingw64/bin'
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-helics=/e/anaconda/Lib/site-packages/helics/install/bin --with-xerces=/e/msys2/mingw64 --enable-silent-rules 'CFLAGS=-g -O2 -w' 'CXXFLAGS=-g -O2 -w' 'LDFLAGS=-g -O2 -w -L/mingw64/bin'
+E:\helics_clone\helics-build\bin to path
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-helics=/e/HELICS --with-xerces=/e/msys2/mingw64 --enable-silent-rules 'CFLAGS=-g -O2 -w' 'CXXFLAGS=-g -O2 -w' 'LDFLAGS=-g -O2 -w -L/mingw64/bin'
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-xerces=/e/msys2/mingw64 --with-matlab=C:\PROGRA~1\MATLAB\R2016a\bin\win64  --enable-silent-rules 'CFLAGS=-O2 -w' 'CXXFLAGS=-O2 -w' 'LDFLAGS=-O2 -w -L/mingw64/bin'
+./configure --build=x86_64-w64-mingw32 --prefix=/e/GridLAB-D_new --with-xerces=/c/msys64/mingw64 --with-matlab=C:/PROGRA~1/MATLAB/R2016a  --enable-silent-rules 'CFLAGS=-O2 -w' 'CXXFLAGS=-O2 -w' 'LDFLAGS=-O2 -w'
+imp commands
+echo "${PATH//:/$'\n'}"

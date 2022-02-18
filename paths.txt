@@ -1,0 +1,15 @@
+/c/msys64/mingw64/bin
+/c/PROGRA~1/MATLAB/2016a/bin
+/c/PROGRA~1/MATLAB/2016a/lib
+/c/PROGRA~1/MATLAB/2016a/bin/win64
+/c/PROGRA~1/MATLAB/2016a
+/c/PROGRA~1/MATLAB/2016a/extern/include
+/c/msys64/mingw64/lib
+/e/GridLAB-D_new/bin
+/c/msys64/mingw64
+/c/msys64/mingw64/bin
+/c/msys64/mingw64/lib
+/e/GridLAB-D_new/lib/gridlabd
+/e/GridLAB-D_new/lib/gridlabd
+/e/GridLAB-D_new/share/gridlabd
+/e/GridLAB-D_new/include/gridlabd

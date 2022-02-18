@@ -1,0 +1,7 @@
+export GLPATH=/e/GridLAB-D_new/lib/gridlabd:/e/GridLAB-D_new/share/gridlabd
+export PATH=$PATH:/e/GridLAB-D_new/bin
+export PATH=$PATH:/c/msys64/mingw64/bin
+
+---with matlab---
+export PATH=$PATH:"C:\Program Files\MATLAB\R2016a\bin\win64"
+export PATH=$PATH:/c/PROGRA~1/MATLAB/R2016a/bin/win64
