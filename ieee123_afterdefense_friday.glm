@@ -2790,14 +2790,13 @@ object house{
 			power_factor 1;
             shape "type:analog; schedule: light_load; power:2kW";
 	};
-
-	object evcharger_det {
+		object evcharger_det {
        
-       work_charging_available false;
+       //work_charging_available false;
        //arrival_at_work 0800;	
        //duration_at_work 8 h;
-       arrival_at_home 1700;	
-       duration_at_home 15 h;
+       //arrival_at_home 1700;	
+       //duration_at_home 15 h;
 	   battery_size 32;
 	   battery_SOC 60;
        maximum_charge_rate 3200;
@@ -2810,6 +2809,8 @@ object house{
 			interval 3600;
 		};
 	};
+
+
 }
 
 //object voltdump{
